@@ -10,4 +10,7 @@ public interface ReporteBootcampRepository extends ReactiveMongoRepository<Repor
     @Query("{ 'bootcampId': ?0 }")
     @Update("{ '$inc' : { 'cantidadPersonas': 1 } }")
     Mono<Void> incrementarPersonas(Long bootcampId);
+
+    @Query(sort = "{ 'cantidadPersonas': -1 }")
+    Mono<ReporteBootcampDocument> findTopByOrderByCantidadPersonasDesc();
 }

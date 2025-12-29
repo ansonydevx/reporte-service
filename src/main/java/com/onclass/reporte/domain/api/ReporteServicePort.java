@@ -6,4 +6,6 @@ import reactor.core.publisher.Mono;
 public interface ReporteServicePort {
     Mono<Void> registrar(ReporteBootcamp reporte);
     Mono<Void> incrementarPersonas(Long bootcampId);
+
+    Mono<ReporteBootcamp> obtenerBootcampMasExitoso();
 }

@@ -38,6 +38,7 @@ public class RouterRest {
         return RouterFunctions.route()
                 .POST("/reportes/bootcamps", handler::registrar)
                 .POST("/reportes/bootcamps/{id}/incrementar-personas", handler::incrementarPersonas)
+                .GET("/reportes/bootcamps/mas-exitoso", handler::obtenerBootcampMasExitoso)
                 .build();
     }
 }

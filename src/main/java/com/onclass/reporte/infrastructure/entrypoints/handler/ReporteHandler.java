@@ -42,4 +42,12 @@ public class ReporteHandler {
                 .incrementarPersonas(bootcampId)
                 .then(ServerResponse.ok().build());
     }
+
+    public Mono<ServerResponse> obtenerBootcampMasExitoso(ServerRequest request) {
+        return reporteServicePort.obtenerBootcampMasExitoso()
+                .flatMap(reporte ->
+                        ServerResponse.ok().bodyValue(reporte)
+                )
+                .switchIfEmpty(ServerResponse.noContent().build());
+    }
 }
