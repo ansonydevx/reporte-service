@@ -34,4 +34,20 @@ public class ReportePersistenceAdapter implements ReportePersistencePort {
     public Mono<Void> incrementarPersonas(Long bootcampId) {
         return repository.incrementarPersonas(bootcampId);
     }
+
+    @Override
+    public Mono<ReporteBootcamp> obtenerBootcampMasExitoso() {
+        return repository.findTopByOrderByCantidadPersonasDesc()
+                .map(doc -> new ReporteBootcamp(
+                        doc.getId(),
+                        doc.getBootcampId(),
+                        doc.getNombre(),
+                        doc.getDescripcion(),
+                        doc.getFechaLanzamiento(),
+                        doc.getDuracion(),
+                        doc.getCantidadCapacidades(),
+                        doc.getCantidadTecnologias(),
+                        doc.getCantidadPersonas()
+                ));
+    }
 }

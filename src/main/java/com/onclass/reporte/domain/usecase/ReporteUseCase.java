@@ -27,4 +27,9 @@ public class ReporteUseCase implements ReporteServicePort {
     public Mono<Void> incrementarPersonas(Long bootcampId) {
         return persistencePort.incrementarPersonas(bootcampId);
     }
+
+    @Override
+    public Mono<ReporteBootcamp> obtenerBootcampMasExitoso() {
+        return persistencePort.obtenerBootcampMasExitoso();
+    }
 }
