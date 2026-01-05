@@ -14,26 +14,26 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 public class RouterRest {
 
     @Bean
-//    @RouterOperations({
-//            @RouterOperation(
-//                    path = "/bootcamps",
-//                    method = RequestMethod.POST,
-//                    beanClass = BootcampHandler.class,
-//                    beanMethod = "registrar"
-//            ),
-//            @RouterOperation(
-//                    path = "/bootcamps",
-//                    method = RequestMethod.GET,
-//                    beanClass = BootcampHandler.class,
-//                    beanMethod = "listar"
-//            ),
-//            @RouterOperation(
-//                    path = "/bootcamps/{id}",
-//                    method = RequestMethod.DELETE,
-//                    beanClass = BootcampHandler.class,
-//                    beanMethod = "eliminar"
-//            )
-//    })
+    @RouterOperations({
+            @RouterOperation(
+                    path = "/reportes/bootcamps",
+                    method = RequestMethod.POST,
+                    beanClass = ReporteHandler.class,
+                    beanMethod = "registrar"
+            ),
+            @RouterOperation(
+                    path = "/reportes/bootcamps/{id}/incrementar-personas",
+                    method = RequestMethod.POST,
+                    beanClass = ReporteHandler.class,
+                    beanMethod = "incrementarPersonas"
+            ),
+            @RouterOperation(
+                    path = "/reportes/bootcamps/mas-exitoso",
+                    method = RequestMethod.GET,
+                    beanClass = ReporteHandler.class,
+                    beanMethod = "obtenerBootcampMasExitoso"
+            )
+    })
     public RouterFunction<ServerResponse> routerFunction(ReporteHandler handler) {
         return RouterFunctions.route()
                 .POST("/reportes/bootcamps", handler::registrar)
